@@ -18,7 +18,7 @@ export default function Footer() {
       <div style={{ position:"absolute", top:0, left:"50%", transform:"translateX(-50%)", width:600, height:200, background:`radial-gradient(ellipse, ${T}10 0%, transparent 70%)`, pointerEvents:"none" }} />
 
       {/* Main */}
-      <div style={{ maxWidth:"1200px", margin:"0 auto", padding:"80px 40px 56px", position:"relative" }}>
+      <div className="footer-main" style={{ maxWidth:"1200px", margin:"0 auto", padding:"80px 40px 56px", position:"relative" }}>
 
         {/* Top row — brand + nav */}
         <div className="footer-top" style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:40, marginBottom:64 }}>
@@ -72,7 +72,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", flexWrap:"wrap", gap:12 }}>
+        <div className="footer-bottom" style={{ display:"flex", alignItems:"center", justifyContent:"space-between", flexWrap:"wrap", gap:12 }}>
           <p style={{ fontSize:"12px", color:`${S}25`, fontWeight:400 }}>
             © {new Date().getFullYear()} Atlas da Dieta. Todos os direitos reservados.
           </p>
@@ -83,7 +83,13 @@ export default function Footer() {
         </div>
       </div>
 
-      <style>{`@media(max-width:768px){.footer-top{grid-template-columns:1fr!important}}`}</style>
+      <style>{`
+        @media(max-width:768px){
+          .footer-top{grid-template-columns:1fr!important; gap:32px!important; margin-bottom:40px!important;}
+          .footer-main{padding:56px 20px 40px!important;}
+          .footer-bottom{flex-direction:column!important; align-items:center!important; text-align:center!important; gap:8px!important;}
+        }
+      `}</style>
     </footer>
   );
 }

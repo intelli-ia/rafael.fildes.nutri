@@ -76,11 +76,11 @@ export default function FAQ() {
   const [cRef, cS] = useReveal(0.1);
 
   return (
-    <section style={{ backgroundColor:P, padding:"140px 0", position:"relative", overflow:"hidden" }}>
+    <section className="faq-section" style={{ backgroundColor:P, padding:"140px 0", position:"relative", overflow:"hidden" }}>
       {/* Top-right decorative */}
       <div style={{ position:"absolute", top:"-5%", right:"-5%", width:400, height:400, borderRadius:"50%", background:`radial-gradient(circle, ${T}0A 0%, transparent 65%)`, pointerEvents:"none" }} />
 
-      <div style={{ maxWidth:"1200px", margin:"0 auto", padding:"0 40px" }}>
+      <div className="faq-inner" style={{ maxWidth:"1200px", margin:"0 auto", padding:"0 40px" }}>
 
         {/* Header */}
         <div ref={hRef} style={{ ...hS, display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"flex-end", marginBottom:"88px" }} className="faq-header">
@@ -145,7 +145,7 @@ export default function FAQ() {
             Ainda na dúvida?
           </p>
           <p style={{ fontSize:"clamp(20px, 2.5vw, 28px)", fontWeight:800, color:S, marginBottom:32, letterSpacing:"-0.02em", lineHeight:1.3 }}>
-            Você está a uma decisão de sair da decoreba{" "}
+            Você está a uma decisão de sair da decoreba<br/>
             <span style={{ color:T }}>e dominar de verdade.</span>
           </p>
           <ShineButton href="#investimento" style={{
@@ -159,7 +159,19 @@ export default function FAQ() {
         </div>
       </div>
 
-      <style>{`@media(max-width:900px){.faq-header{grid-template-columns:1fr!important;gap:40px!important}}`}</style>
+      <style>{`
+        @media(max-width:900px){.faq-header{grid-template-columns:1fr!important;gap:40px!important}}
+        @media(max-width:768px){
+          .faq-section { padding: 72px 0 !important; }
+          .faq-inner { padding: 0 20px !important; text-align: center !important; }
+          .faq-header { margin-bottom: 48px !important; }
+          .faq-header > div:first-child { display: flex !important; flex-direction: column !important; align-items: center !important; }
+          .faq-header > div:last-child { display: flex !important; flex-direction: column !important; align-items: center !important; }
+          .faq-item-row { padding: 20px 20px !important; justify-content: center !important; }
+          .faq-item-answer { padding: 0 20px 20px 20px !important; font-size: 14px !important; text-align: center !important; }
+          .faq-final-cta { padding-top: 40px !important; display: flex !important; flex-direction: column !important; align-items: center !important; }
+        }
+      `}</style>
     </section>
   );
 }

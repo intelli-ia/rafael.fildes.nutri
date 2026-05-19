@@ -38,12 +38,12 @@ export default function PainPoints() {
   const [bRef, bS] = useReveal(0.45);
 
   return (
-    <section style={{ backgroundColor: "#060E0D", padding: "140px 0", position: "relative", overflow: "hidden" }}>
+    <section className="pp-section" style={{ backgroundColor: "#060E0D", padding: "140px 0", position: "relative", overflow: "hidden" }}>
       {/* Ambient glows */}
       <div style={{ position:"absolute", top:"15%", left:"-8%", width:480, height:480, borderRadius:"50%", background:"radial-gradient(circle, rgba(239,68,68,0.05) 0%, transparent 70%)", pointerEvents:"none" }} />
       <div style={{ position:"absolute", top:"20%", right:"-8%", width:480, height:480, borderRadius:"50%", background:`radial-gradient(circle, ${T}0A 0%, transparent 70%)`, pointerEvents:"none" }} />
 
-      <div style={{ maxWidth:"1200px", margin:"0 auto", padding:"0 40px" }}>
+      <div className="pp-inner" style={{ maxWidth:"1200px", margin:"0 auto", padding:"0 40px" }}>
 
         {/* Label */}
         <div ref={h1Ref} style={{ ...h1S, textAlign:"center" }}>
@@ -61,7 +61,7 @@ export default function PainPoints() {
 
         {/* Headline */}
         <div ref={h2Ref} style={{ ...h2S, marginBottom:"72px", textAlign:"center" }}>
-          <h2 style={{
+          <h2 className="pp-headline" style={{
             fontSize:"clamp(38px, 5vw, 68px)", fontWeight:900,
             color:S, lineHeight:1.06, letterSpacing:"-0.03em",
             maxWidth:"820px", marginBottom:"20px", margin:"0 auto 20px",
@@ -69,7 +69,7 @@ export default function PainPoints() {
             A faculdade te deu protocolos.{" "}
             <span style={{ color:T }}>Ninguém te ensinou a raciocinar.</span>
           </h2>
-          <p style={{ fontSize:"18px", color:`${S}55`, lineHeight:1.7, maxWidth:"520px", fontWeight:400, margin:"0 auto" }}>
+          <p className="pp-sub" style={{ fontSize:"18px", color:`${S}55`, lineHeight:1.7, maxWidth:"520px", fontWeight:400, margin:"0 auto" }}>
             Esse é o buraco que separa quem aplica dietas de quem as domina.
           </p>
         </div>
@@ -152,7 +152,7 @@ export default function PainPoints() {
           background:`linear-gradient(135deg, ${S}03 0%, ${S}01 100%)`,
           border:`1px solid ${S}08`,
           justifyContent:"center", textAlign:"center",
-        }}>
+        }} className="pp-bridge">
           <p style={{ fontSize:"20px", color:`${S}66`, lineHeight:1.8, fontWeight:400 }}>
             Não é culpa sua. A grade curricular entrega protocolos prontos, mas esquece de mostrar o mecanismo real.
             <br /><strong style={{ color:S, fontWeight:700 }}>O Atlas da Dieta existe para preencher esse buraco e transformar insegurança em domínio técnico.</strong>
@@ -163,9 +163,15 @@ export default function PainPoints() {
       <style>{`
         .pp-grid { display: grid; grid-template-columns: 1fr 1fr; }
         @media(max-width:768px){
+          .pp-section { padding: 80px 0 !important; }
+          .pp-inner { padding: 0 20px !important; }
           .pp-grid { grid-template-columns: 1fr !important; }
-          .pp-grid > div:first-child { border-radius: 24px 24px 0 0 !important; border-right: 1px solid rgba(239,68,68,0.1) !important; border-bottom: none !important; }
-          .pp-grid > div:last-child { border-radius: 0 0 24px 24px !important; border-left: 1px solid rgba(97,191,191,0.18) !important; }
+          .pp-grid > div:first-child { border-radius: 24px 24px 0 0 !important; border-right: 1px solid rgba(239,68,68,0.1) !important; border-bottom: none !important; padding: 36px 24px !important; }
+          .pp-grid > div:last-child { border-radius: 0 0 24px 24px !important; border-left: 1px solid rgba(97,191,191,0.18) !important; padding: 36px 24px !important; }
+          .pp-bridge { padding: 24px !important; }
+          .pp-headline { font-size: 32px !important; }
+          .pp-sub { font-size: 15px !important; }
+          .pp-bridge-text { font-size: 15px !important; }
         }
       `}</style>
     </section>

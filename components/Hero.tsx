@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { ElegantShape } from "@/components/ui/shape-landing-hero";
 import { ShineButton } from "@/components/ui/shine-button";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 const PRIMARY = "#173A39";
 const SECONDARY = "#FFFFF2";
@@ -36,9 +37,99 @@ function useCountUp(target: number, duration = 1600) {
 export default function Hero() {
   const alunos = useCountUp(150, 1800);
   const anos = useCountUp(6, 1400);
+  const isMobile = useIsMobile();
 
+  /* ── MOBILE ─────────────────────────────────────────────── */
+  if (isMobile) {
+    return (
+      <section style={{ position: "relative", height: "100svh", backgroundColor: "#FFFFFF", zIndex: 1 }}>
+        {/* Green background */}
+        <div style={{
+          position: "absolute", inset: 0,
+          backgroundColor: PRIMARY,
+          borderBottomLeftRadius: "44px", borderBottomRightRadius: "44px",
+        }} />
+
+        {/* Imagem fora do overflow:hidden para não ser cortada */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/2.png" alt="" style={{
+          position: "absolute",
+          left: "50%", top: "-5%",
+          transform: "translateX(-50%)",
+          width: "180vw", height: "auto",
+          zIndex: 1, pointerEvents: "none",
+          opacity: 1,
+        }} />
+
+        {/* Content */}
+        <div style={{
+          position: "absolute", inset: 0, zIndex: 3,
+          display: "flex", flexDirection: "column",
+          justifyContent: "flex-end",
+          padding: "0 24px 148px",
+          alignItems: "center",
+          textAlign: "center",
+        }}>
+          {/* Text block */}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
+            <h1 style={{
+              fontSize: "28px", fontWeight: 900,
+              color: SECONDARY, lineHeight: 1.12,
+              marginBottom: "10px", letterSpacing: "-0.02em",
+            }}>
+              Em <span style={{ color: TERTIARY }}>8 aulas</span>, aprenda a dominar o mecanismo fisiológico de qualquer dieta.
+            </h1>
+
+            <p style={{
+              fontSize: "13px", fontWeight: 400,
+              color: `${SECONDARY}AA`, lineHeight: 1.6,
+              marginBottom: "20px",
+            }}>
+              Entenda, compare e aplique diferentes dietas<br />com segurança científica.
+            </p>
+
+            {/* CTA */}
+            <a href="#investimento" className="btn-shine" style={{
+              display: "flex", alignItems: "center", justifyContent: "center",
+              backgroundColor: TERTIARY, color: PRIMARY,
+              padding: "12px 24px", borderRadius: "10px",
+              fontSize: "13px", fontWeight: 800,
+              boxShadow: `0 0 20px ${TERTIARY}44`,
+              textDecoration: "none", letterSpacing: "-0.01em",
+              fontFamily: "inherit", minHeight: "44px",
+            }}>
+              Quero dominar as dietas de verdade
+            </a>
+          </div>
+
+          {/* Stats strip */}
+          <div style={{
+            display: "flex", alignItems: "center",
+            paddingTop: "0",
+            width: "100%", textAlign: "left", marginTop: "20px",
+          }}>
+            <div style={{ flex: 1, textAlign: "center" }}>
+              <div style={{ fontSize: "20px", fontWeight: 800, color: TERTIARY, lineHeight: 1 }}>+{alunos}</div>
+              <div style={{ fontSize: "10px", color: `${SECONDARY}55`, marginTop: 4, fontWeight: 400 }}>alunos formados</div>
+            </div>
+            <div style={{ width: 1, height: 36, backgroundColor: `${SECONDARY}15`, flexShrink: 0 }} />
+            <div style={{ flex: 1, textAlign: "center" }}>
+              <div style={{ fontSize: "20px", fontWeight: 800, color: TERTIARY, lineHeight: 1 }}>+{anos} anos</div>
+              <div style={{ fontSize: "10px", color: `${SECONDARY}55`, marginTop: 4, fontWeight: 400 }}>em consultório</div>
+            </div>
+            <div style={{ width: 1, height: 36, backgroundColor: `${SECONDARY}15`, flexShrink: 0 }} />
+            <div style={{ flex: 1, textAlign: "center" }}>
+              <div style={{ fontSize: "20px", fontWeight: 800, color: TERTIARY, lineHeight: 1 }}>Mestre</div>
+              <div style={{ fontSize: "10px", color: `${SECONDARY}55`, marginTop: 4, fontWeight: 400 }}>Bioquímica UFBA</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  /* ── DESKTOP (unchanged) ─────────────────────────────────── */
   return (
-    /* Wrapper: ocupa 100vh + extensão do fundo abaixo do fold */
     <section
       style={{
         position: "relative",
@@ -47,7 +138,6 @@ export default function Hero() {
         zIndex: 1,
       }}
     >
-      {/* Fundo verde com bordas arredondadas — extende até o fim do wrapper */}
       <div
         style={{
           position: "absolute",
@@ -58,7 +148,6 @@ export default function Hero() {
           overflow: "hidden",
         }}
       >
-        {/* z-0 — foto de fundo */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/Group 1171276512.png"
@@ -73,8 +162,6 @@ export default function Hero() {
             pointerEvents: "none",
           }}
         />
-
-        {/* z-1 — gradiente esquerdo */}
         <div
           style={{
             position: "absolute",
@@ -84,7 +171,6 @@ export default function Hero() {
             pointerEvents: "none",
           }}
         />
-        {/* z-1 — gradiente inferior */}
         <div
           style={{
             position: "absolute",
@@ -95,8 +181,6 @@ export default function Hero() {
             pointerEvents: "none",
           }}
         />
-
-        {/* z-2 — shapes animadas */}
         <div
           style={{
             position: "absolute",
@@ -106,64 +190,25 @@ export default function Hero() {
             overflow: "hidden",
           }}
         >
-          <ElegantShape
-            delay={0.3}
-            width={520}
-            height={130}
-            rotate={12}
-            color="rgba(97,191,191,0.02)"
-            style={{ left: "-4%", top: "-4%" }}
-          />
-          <ElegantShape
-            delay={0.5}
-            width={380}
-            height={90}
-            rotate={-15}
-            color="rgba(97,191,191,0.015)"
-            style={{ left: "8%", bottom: "14%" }}
-          />
-          <ElegantShape
-            delay={0.4}
-            width={260}
-            height={65}
-            rotate={-8}
-            color="rgba(255,255,242,0.01)"
-            style={{ left: "42%", top: "52%" }}
-          />
-          <ElegantShape
-            delay={0.7}
-            width={170}
-            height={46}
-            rotate={22}
-            color="rgba(97,191,191,0.015)"
-            style={{ left: "3%", top: "52%" }}
-          />
+          <ElegantShape delay={0.3} width={520} height={130} rotate={12} color="rgba(97,191,191,0.02)" style={{ left: "-4%", top: "-4%" }} />
+          <ElegantShape delay={0.5} width={380} height={90} rotate={-15} color="rgba(97,191,191,0.015)" style={{ left: "8%", bottom: "14%" }} />
+          <ElegantShape delay={0.4} width={260} height={65} rotate={-8} color="rgba(255,255,242,0.01)" style={{ left: "42%", top: "52%" }} />
+          <ElegantShape delay={0.7} width={170} height={46} rotate={22} color="rgba(97,191,191,0.015)" style={{ left: "3%", top: "52%" }} />
         </div>
       </div>
 
-      {/* Conteúdo — centralizado dentro apenas dos 100vh visíveis */}
       <div
         style={{
           position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
+          top: 0, left: 0, right: 0,
           height: "100vh",
           display: "flex",
           alignItems: "center",
           zIndex: 3,
         }}
       >
-        <div
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            padding: "100px 40px",
-            width: "100%",
-          }}
-        >
+        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "100px 40px", width: "100%" }}>
           <div style={{ maxWidth: "580px" }}>
-            {/* H1 */}
             <h1
               style={{
                 fontSize: "clamp(26px, 2.8vw, 40px)",
@@ -178,7 +223,6 @@ export default function Hero() {
               dominar o mecanismo fisiológico de qualquer dieta.
             </h1>
 
-            {/* H2 */}
             <p
               style={{
                 fontSize: "18px",
@@ -193,7 +237,6 @@ export default function Hero() {
               na faculdade ou já no consultório.
             </p>
 
-            {/* CTA */}
             <ShineButton
               href="#investimento"
               style={{
@@ -208,7 +251,6 @@ export default function Hero() {
               Quero dominar as dietas de verdade
             </ShineButton>
 
-            {/* Stats */}
             <div
               style={{
                 display: "flex",
@@ -219,57 +261,27 @@ export default function Hero() {
                 borderTop: `1px solid ${SECONDARY}15`,
               }}
             >
-              {/* +150 com avatares */}
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "4px" }}>
-                  <div style={{ fontSize: "22px", fontWeight: 800, color: TERTIARY, lineHeight: 1 }}>
-                    +{alunos}
-                  </div>
+                  <div style={{ fontSize: "22px", fontWeight: 800, color: TERTIARY, lineHeight: 1 }}>+{alunos}</div>
                   <div style={{ display: "flex" }}>
                     {AVATARS.map((src, i) => (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        key={i}
-                        src={src}
-                        alt=""
-                        style={{
-                          width: "28px",
-                          height: "28px",
-                          borderRadius: "50%",
-                          border: `2px solid ${PRIMARY}`,
-                          marginLeft: i === 0 ? 0 : "-8px",
-                          objectFit: "cover",
-                          display: "block",
-                        }}
-                      />
+                      <img key={i} src={src} alt="" style={{ width: "28px", height: "28px", borderRadius: "50%", border: `2px solid ${PRIMARY}`, marginLeft: i === 0 ? 0 : "-8px", objectFit: "cover", display: "block" }} />
                     ))}
                   </div>
                 </div>
-                <div style={{ fontSize: "13px", color: `${SECONDARY}66`, fontWeight: 400 }}>
-                  alunos formados
-                </div>
+                <div style={{ fontSize: "13px", color: `${SECONDARY}66`, fontWeight: 400 }}>alunos formados</div>
               </div>
-
               <div style={{ width: "1px", height: "48px", backgroundColor: `${SECONDARY}15`, flexShrink: 0 }} />
-
               <div>
-                <div style={{ fontSize: "22px", fontWeight: 800, color: TERTIARY, lineHeight: 1, marginBottom: "4px" }}>
-                  +{anos} anos
-                </div>
-                <div style={{ fontSize: "13px", color: `${SECONDARY}66`, fontWeight: 400 }}>
-                  em consultório
-                </div>
+                <div style={{ fontSize: "22px", fontWeight: 800, color: TERTIARY, lineHeight: 1, marginBottom: "4px" }}>+{anos} anos</div>
+                <div style={{ fontSize: "13px", color: `${SECONDARY}66`, fontWeight: 400 }}>em consultório</div>
               </div>
-
               <div style={{ width: "1px", height: "48px", backgroundColor: `${SECONDARY}15`, flexShrink: 0 }} />
-
               <div>
-                <div style={{ fontSize: "22px", fontWeight: 800, color: TERTIARY, lineHeight: 1, marginBottom: "4px" }}>
-                  Mestre
-                </div>
-                <div style={{ fontSize: "13px", color: `${SECONDARY}66`, fontWeight: 400 }}>
-                  em Bioquímica pela UFBA
-                </div>
+                <div style={{ fontSize: "22px", fontWeight: 800, color: TERTIARY, lineHeight: 1, marginBottom: "4px" }}>Mestre</div>
+                <div style={{ fontSize: "13px", color: `${SECONDARY}66`, fontWeight: 400 }}>em Bioquímica pela UFBA</div>
               </div>
             </div>
           </div>

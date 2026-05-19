@@ -2,6 +2,7 @@
 
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
 import { motion } from "motion/react";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 const PRIMARY  = '#173A39';
 const TERTIARY = '#61BFBF';
@@ -74,13 +75,20 @@ function Card({ diet }: { diet: typeof col1Diets[0] }) {
 }
 
 export default function DietCarousel() {
+  const isMobile = useIsMobile();
   const col1 = col1Diets.map((diet, i) => <Card key={i} diet={diet} />);
   const col2 = col2Diets.map((diet, i) => <Card key={i} diet={diet} />);
   const col3 = col3Diets.map((diet, i) => <Card key={i} diet={diet} />);
 
   return (
-    <section style={{ backgroundColor: WHITE, padding: '96px 0', overflow: 'hidden' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+    <section style={{ backgroundColor: WHITE, padding: '96px 0', overflow: 'hidden' }} className="diet-section">
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }} className="diet-inner">
+      <style>{`
+        @media (max-width: 768px) {
+          .diet-section { padding: 64px 0 !important; }
+          .diet-inner { padding: 0 20px !important; }
+        }
+      `}</style>
 
         {/* Header centralizado */}
         <motion.div
@@ -94,7 +102,7 @@ export default function DietCarousel() {
             Conteúdo do curso
           </p>
           <h2 style={{ fontSize: 'clamp(28px, 3vw, 44px)', fontWeight: 800, color: PRIMARY, lineHeight: 1.2, letterSpacing: '-0.02em', marginBottom: '16px' }}>
-            Você dominará{' '}
+            Você dominará<br/>
             <span style={{ color: TERTIARY }}>todas essas dietas.</span>
           </h2>
           <p style={{ fontSize: '16px', color: '#5A6B6A', lineHeight: 1.8, fontWeight: 400, maxWidth: '480px' }}>
@@ -103,7 +111,7 @@ export default function DietCarousel() {
         </motion.div>
 
         {/* Colunas animadas */}
-        <div style={{
+        <div className="diet-columns" style={{
           display: 'flex',
           justifyContent: 'center',
           gap: '16px',
@@ -112,12 +120,17 @@ export default function DietCarousel() {
           maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
           WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
         }}>
-          <TestimonialsColumn items={col1} duration={28} />
+          <TestimonialsColumn items={col1} duration={isMobile ? 10 : 28} />
           <TestimonialsColumn items={col2} duration={22} className="hidden md:block" />
           <TestimonialsColumn items={col3} duration={25} className="hidden lg:block" />
         </div>
 
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .diet-columns { max-height: 480px !important; gap: 0 !important; }
+        }
+      `}</style>
     </section>
   );
 }

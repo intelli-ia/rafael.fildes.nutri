@@ -26,6 +26,7 @@ export default function Pricing() {
     <section
       ref={ref}
       id="investimento"
+      className="pricing-section"
       style={{ backgroundColor: "#060E0D", padding: "120px 0 140px", position: "relative", overflow: "hidden" }}
     >
       {/* Ambient glow top */}
@@ -36,7 +37,7 @@ export default function Pricing() {
         pointerEvents: "none",
       }} />
 
-      <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 24px", position: "relative" }}>
+      <div className="pricing-inner" style={{ maxWidth: 1080, margin: "0 auto", padding: "0 24px", position: "relative" }}>
 
         {/* Header */}
         <motion.div
@@ -61,7 +62,7 @@ export default function Pricing() {
             background: `linear-gradient(175deg, ${S} 40%, ${T} 120%)`,
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
           }}>
-            Acesso completo ao Atlas da Dieta
+            Acesso completo ao<br/>Atlas da Dieta
           </h2>
           <p style={{ marginTop: 16, fontSize: 16, color: `${S}50`, maxWidth: 520, margin: "16px auto 0", lineHeight: 1.7 }}>
             Tudo que você precisa para sair da decoreba e dominar o raciocínio clínico por trás de cada dieta.
@@ -246,7 +247,7 @@ export default function Pricing() {
             </Link>
 
             {/* Trust signals */}
-            <div style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 11 }}>
+            <div className="trust-signals" style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 11 }}>
               {[
                 { Icon: Shield, text: "14 dias de garantia incondicional" },
                 { Icon: Lock, text: "Pagamento 100% seguro" },
@@ -308,11 +309,14 @@ export default function Pricing() {
             order: 1;
           }
         }
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
+          .pricing-section { padding: 72px 0 80px !important; }
+          .pricing-inner { padding: 0 20px !important; }
           .pricing-card > div:first-child,
-          .pricing-card > div:last-child {
-            padding: 28px 20px !important;
-          }
+          .pricing-card > div:last-child { padding: 28px 20px !important; }
+          .pricing-cta { font-size: 15px !important; padding: 18px 20px !important; min-height: 56px; }
+          .trust-signals { align-items: center !important; }
+          .trust-signals > div { justify-content: center !important; }
         }
       `}</style>
     </section>
