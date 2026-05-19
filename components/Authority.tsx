@@ -137,7 +137,7 @@ export default function Authority() {
 
         <div className="auth-grid" style={{ display:"grid", gridTemplateColumns:"380px 1fr", gap:"96px", alignItems:"center" }}>
           <div ref={pRef} style={pS}>
-            <GlowCard tilt glowColor="teal" style={{ "--radius": "28", borderRadius:28, paddingBottom:"118%", position:"relative", overflow:"hidden" } as React.CSSProperties & Record<string, string>}>
+            <GlowCard tilt glowColor="teal" style={{ "--radius": "28", borderRadius:28, paddingBottom:"118%", position:"relative", overflow:"hidden" } as React.CSSProperties & Record<string, string | number>}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/IMG_4615 copiar 5.png" alt="Rafael Fildes" style={{ position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover", objectPosition:"center top" }} />
               <div style={{ position:"absolute", bottom:20, left:16, right:16, padding:"16px 18px", borderRadius:14, backgroundColor:"rgba(23,58,57,0.95)", border:`1px solid ${T}33` }}>
@@ -148,7 +148,7 @@ export default function Authority() {
 
             <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8, marginTop:12 }}>
               {creds.map((c) => (
-                <GlowCard key={c.label} tilt glowColor="teal" style={{ "--radius": "10", borderRadius:10, padding:"6px 8px", display:"flex", gap:8, alignItems:"center" } as React.CSSProperties & Record<string, string>}>
+                <GlowCard key={c.label} tilt glowColor="teal" style={{ "--radius": "10", borderRadius:10, padding:"6px 8px", display:"flex", gap:8, alignItems:"center" } as React.CSSProperties & Record<string, string | number>}>
                   <span style={{ fontSize:14, flexShrink:0 }}>{c.icon}</span>
                   <div>
                     <p style={{ fontSize:"8px", fontWeight:700, color:T, textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:2 }}>{c.label}</p>

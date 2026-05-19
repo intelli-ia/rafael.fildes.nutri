@@ -86,7 +86,7 @@ export default function Pricing() {
             gridTemplateColumns: "1fr 360px",
             background: "linear-gradient(145deg, #0E2322 0%, #07120F 60%, #060E0D 100%)",
             boxShadow: `0 0 100px ${T}07, 0 48px 96px rgba(0,0,0,0.5)`,
-          } as React.CSSProperties & Record<string, string>}
+          } as React.CSSProperties & Record<string, string | number>}
         >
           {/* ── LEFT — Value stack ── */}
           <div style={{ padding: "52px 48px", borderRight: `1px solid ${T}10` }}>
