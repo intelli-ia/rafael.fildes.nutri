@@ -42,7 +42,7 @@ export default function Hero() {
   /* ── MOBILE ─────────────────────────────────────────────── */
   if (isMobile) {
     return (
-      <section style={{ position: "relative", height: "100svh", backgroundColor: "#FFFFFF", zIndex: 1 }}>
+      <section style={{ position: "relative", height: "calc(100svh + 80px)", backgroundColor: "#FFFFFF", zIndex: 1 }}>
         {/* Green background */}
         <div style={{
           position: "absolute", inset: 0,
@@ -66,24 +66,24 @@ export default function Hero() {
           position: "absolute", inset: 0, zIndex: 3,
           display: "flex", flexDirection: "column",
           justifyContent: "flex-end",
-          padding: "0 24px 148px",
+          padding: "0 24px 158px",
           alignItems: "center",
           textAlign: "center",
         }}>
           {/* Text block */}
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
             <h1 style={{
-              fontSize: "28px", fontWeight: 900,
+              fontSize: "25px", fontWeight: 900,
               color: SECONDARY, lineHeight: 1.12,
-              marginBottom: "10px", letterSpacing: "-0.02em",
+              marginBottom: "8px", letterSpacing: "-0.02em",
             }}>
               Em <span style={{ color: TERTIARY }}>8 aulas</span>, aprenda a dominar o mecanismo fisiológico de qualquer dieta.
             </h1>
 
             <p style={{
-              fontSize: "13px", fontWeight: 400,
+              fontSize: "12px", fontWeight: 400,
               color: `${SECONDARY}AA`, lineHeight: 1.6,
-              marginBottom: "20px",
+              marginBottom: "14px",
             }}>
               Entenda, compare e aplique diferentes dietas<br />com segurança científica.
             </p>
@@ -92,11 +92,11 @@ export default function Hero() {
             <a href="#investimento" className="btn-shine" style={{
               display: "flex", alignItems: "center", justifyContent: "center",
               backgroundColor: TERTIARY, color: PRIMARY,
-              padding: "12px 24px", borderRadius: "10px",
-              fontSize: "13px", fontWeight: 800,
-              boxShadow: `0 0 20px ${TERTIARY}44`,
+              padding: "9px 20px", borderRadius: "9px",
+              fontSize: "12px", fontWeight: 800,
+              boxShadow: `0 0 16px ${TERTIARY}44`,
               textDecoration: "none", letterSpacing: "-0.01em",
-              fontFamily: "inherit", minHeight: "44px",
+              fontFamily: "inherit", minHeight: "40px",
             }}>
               Quero dominar as dietas de verdade
             </a>
@@ -105,22 +105,21 @@ export default function Hero() {
           {/* Stats strip */}
           <div style={{
             display: "flex", alignItems: "center",
-            paddingTop: "0",
-            width: "100%", textAlign: "left", marginTop: "20px",
+            width: "100%", textAlign: "left", marginTop: "14px",
           }}>
             <div style={{ flex: 1, textAlign: "center" }}>
-              <div style={{ fontSize: "20px", fontWeight: 800, color: TERTIARY, lineHeight: 1 }}>+{alunos}</div>
-              <div style={{ fontSize: "10px", color: `${SECONDARY}55`, marginTop: 4, fontWeight: 400 }}>alunos formados</div>
+              <div style={{ fontSize: "17px", fontWeight: 800, color: TERTIARY, lineHeight: 1 }}>+{alunos}</div>
+              <div style={{ fontSize: "10px", color: `${SECONDARY}55`, marginTop: 3, fontWeight: 400 }}>alunos formados</div>
             </div>
-            <div style={{ width: 1, height: 36, backgroundColor: `${SECONDARY}15`, flexShrink: 0 }} />
+            <div style={{ width: 1, height: 28, backgroundColor: `${SECONDARY}15`, flexShrink: 0 }} />
             <div style={{ flex: 1, textAlign: "center" }}>
-              <div style={{ fontSize: "20px", fontWeight: 800, color: TERTIARY, lineHeight: 1 }}>+{anos} anos</div>
-              <div style={{ fontSize: "10px", color: `${SECONDARY}55`, marginTop: 4, fontWeight: 400 }}>em consultório</div>
+              <div style={{ fontSize: "17px", fontWeight: 800, color: TERTIARY, lineHeight: 1 }}>+{anos} anos</div>
+              <div style={{ fontSize: "10px", color: `${SECONDARY}55`, marginTop: 3, fontWeight: 400 }}>em consultório</div>
             </div>
-            <div style={{ width: 1, height: 36, backgroundColor: `${SECONDARY}15`, flexShrink: 0 }} />
+            <div style={{ width: 1, height: 28, backgroundColor: `${SECONDARY}15`, flexShrink: 0 }} />
             <div style={{ flex: 1, textAlign: "center" }}>
-              <div style={{ fontSize: "20px", fontWeight: 800, color: TERTIARY, lineHeight: 1 }}>Mestre</div>
-              <div style={{ fontSize: "10px", color: `${SECONDARY}55`, marginTop: 4, fontWeight: 400 }}>Bioquímica UFBA</div>
+              <div style={{ fontSize: "17px", fontWeight: 800, color: TERTIARY, lineHeight: 1 }}>Mestre</div>
+              <div style={{ fontSize: "10px", color: `${SECONDARY}55`, marginTop: 3, fontWeight: 400 }}>Bioquímica UFBA</div>
             </div>
           </div>
         </div>
