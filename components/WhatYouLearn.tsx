@@ -184,9 +184,9 @@ export default function WhatYouLearn() {
           </div>
         </div>
 
-        {/* Deliverables */}
-        <div style={{ padding: "56px 24px 72px", position: "relative", zIndex: 1 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 28 }}>
+        {/* Deliverables — carrossel horizontal */}
+        <div style={{ padding: "56px 0 72px", position: "relative", zIndex: 1 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 28, padding: "0 24px" }}>
             <div style={{ height: 1, flex: 1, background: `linear-gradient(to right, transparent, ${S}18)` }} />
             <span style={{ fontSize: "10px", fontWeight: 700, color: `${S}30`, textTransform: "uppercase", letterSpacing: "0.12em", whiteSpace: "nowrap" }}>
               Tudo que você recebe
@@ -194,13 +194,25 @@ export default function WhatYouLearn() {
             <div style={{ height: 1, flex: 1, background: `linear-gradient(to left, transparent, ${S}18)` }} />
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+          <div style={{
+            display: "flex", gap: 12,
+            overflowX: "auto", scrollSnapType: "x mandatory",
+            WebkitOverflowScrolling: "touch",
+            paddingLeft: 24, paddingRight: 24, paddingBottom: 8,
+            scrollbarWidth: "none",
+          }}>
             {deliverables.map((d, i) => (
-              <GlowCard key={i} tilt glowColor="teal" className="p-4 gap-2 text-center flex flex-col items-center justify-center" height={120}>
+              <div key={i} style={{
+                flex: "0 0 130px", scrollSnapAlign: "start",
+                borderRadius: 16, padding: "20px 12px",
+                backgroundColor: `${T}0C`, border: `1px solid ${T}20`,
+                display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8,
+                textAlign: "center",
+              }}>
                 <div style={{ fontSize: 24 }}>{d.icon}</div>
                 <p style={{ fontSize: "12px", fontWeight: 800, color: S, lineHeight: 1.3 }}>{d.title}</p>
                 <p style={{ fontSize: "10px", color: `${S}44`, fontWeight: 400 }}>{d.sub}</p>
-              </GlowCard>
+              </div>
             ))}
           </div>
         </div>
