@@ -234,7 +234,7 @@ export default function Pricing() {
             </div>
 
             {/* CTA */}
-            <Link href="#" style={{ textDecoration: "none", display: "block" }}>
+            <Link href="https://pay.hub.la/G4OggbMdVjw5XvIfP0CF" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", display: "block" }}>
               <button
                 className="btn-shine pricing-cta"
                 style={{
@@ -290,11 +290,11 @@ export default function Pricing() {
               flex: 1,
               display: "flex", flexDirection: "column", justifyContent: "center",
             }}>
-              <p style={{ fontSize: 26, marginBottom: 8 }}>🛡️</p>
-              <p style={{ fontSize: 13, fontWeight: 700, color: `${S}55`, lineHeight: 1.5 }}>
+              <p style={{ fontSize: 38, marginBottom: 10 }}>🛡️</p>
+              <p style={{ fontSize: 17, fontWeight: 700, color: `${S}55`, lineHeight: 1.5 }}>
                 Garantia de 14 dias
               </p>
-              <p style={{ fontSize: 11, color: `${S}32`, marginTop: 6, lineHeight: 1.6 }}>
+              <p style={{ fontSize: 14, color: `${S}32`, marginTop: 8, lineHeight: 1.6 }}>
                 Se não gostar, devolvemos 100%<br />do seu dinheiro. Sem perguntas.
               </p>
             </div>
