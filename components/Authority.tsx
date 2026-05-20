@@ -57,7 +57,7 @@ export default function Authority() {
               Seu professor
             </span>
             <h2 style={{ fontSize:"32px", fontWeight:900, color:dark, lineHeight:1.1, letterSpacing:"-0.03em" }}>
-              Quem vai te guiar{" "}
+              Quem vai te guiar<br/>
               <span style={{ color:T }}>nessa jornada?</span>
             </h2>
           </div>

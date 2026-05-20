@@ -1,6 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { ShineButton } from "@/components/ui/shine-button";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 const P = "#173A39";
 const S = "#FFFFF2";
@@ -71,6 +72,7 @@ function Item({ q, a, index }: { q:string; a:string; index:number }) {
 }
 
 export default function FAQ() {
+  const isMobile = useIsMobile();
   const [hRef, hS] = useReveal(0);
   const [fRef, fS] = useReveal(0.2);
   const [cRef, cS] = useReveal(0.1);
@@ -150,9 +152,12 @@ export default function FAQ() {
           </p>
           <ShineButton href="#investimento" style={{
             backgroundColor:T, color:P,
-            padding:"20px 56px", borderRadius:16,
-            fontSize:"17px", fontWeight:800,
+            padding: isMobile ? "13px 24px" : "20px 56px",
+            borderRadius: isMobile ? 12 : 16,
+            fontSize: isMobile ? "13px" : "17px",
+            fontWeight:800,
             boxShadow:`0 8px 40px ${T}44`,
+            whiteSpace: isMobile ? "nowrap" : "normal",
           }}>
             Quero garantir meu acesso agora
           </ShineButton>
