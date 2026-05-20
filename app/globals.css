@@ -69,3 +69,9 @@ body {
 .btn-shine:hover::before {
   background-position: -100% 0, 0 0;
 }
+
+@media (min-width: 769px) {
+  main {
+    zoom: 1.08;
+  }
+}
