@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { Check, Shield, Lock, Zap, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { GlowCard } from "@/components/ui/spotlight-card";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 const T = "#61BFBF";
 const S = "#FFFFF2";
@@ -18,9 +19,34 @@ const items = [
   { icon: "♾️", title: "1 Ano de Acesso Ilimitado", sub: "Reassista quantas vezes precisar", value: "incluso" },
 ];
 
+const cardStyle = {
+  borderRadius: "24px",
+  display: "grid",
+  gridTemplateColumns: "1fr 360px",
+  background: "linear-gradient(145deg, #0E2322 0%, #07120F 60%, #060E0D 100%)",
+  boxShadow: `0 0 100px rgba(97,191,191,0.07), 0 48px 96px rgba(0,0,0,0.5)`,
+} as React.CSSProperties;
+
+function CardWrapper({ isMobile, children }: { isMobile: boolean; children: React.ReactNode }) {
+  if (isMobile) {
+    return (
+      <div className="pricing-card w-full" style={{ ...cardStyle, border: "1px solid rgba(97,191,191,0.18)" }}>
+        {children}
+      </div>
+    );
+  }
+  return (
+    <GlowCard transparent glowColor="teal" className="pricing-card w-full"
+      style={{ "--radius": "24", ...cardStyle } as React.CSSProperties & Record<string, string | number>}>
+      {children}
+    </GlowCard>
+  );
+}
+
 export default function Pricing() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.12 });
+  const isMobile = useIsMobile();
 
   return (
     <section
@@ -75,19 +101,7 @@ export default function Pricing() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.85, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
         >
-        <GlowCard
-          transparent
-          glowColor="teal"
-          className="pricing-card w-full"
-          style={{
-            "--radius": "24",
-            borderRadius: "24px",
-            display: "grid",
-            gridTemplateColumns: "1fr 360px",
-            background: "linear-gradient(145deg, #0E2322 0%, #07120F 60%, #060E0D 100%)",
-            boxShadow: `0 0 100px ${T}07, 0 48px 96px rgba(0,0,0,0.5)`,
-          } as React.CSSProperties & Record<string, string | number>}
-        >
+        <CardWrapper isMobile={isMobile}>
           {/* ── LEFT — Value stack ── */}
           <div style={{ padding: "52px 48px", borderRight: `1px solid ${T}10` }}>
             <p style={{
@@ -285,7 +299,7 @@ export default function Pricing() {
               </p>
             </div>
           </div>
-        </GlowCard>
+        </CardWrapper>
         </motion.div>
       </div>
 
