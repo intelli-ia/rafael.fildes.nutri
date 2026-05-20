@@ -75,11 +75,11 @@ export default function Authority() {
           {/* Credentials 2x2 */}
           <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8, marginBottom:36 }}>
             {creds.map((c) => (
-              <div key={c.label} style={{ borderRadius:10, padding:"8px 10px", display:"flex", gap:8, alignItems:"center", backgroundColor:`${T}0C`, border:`1px solid ${T}20` }}>
+              <div key={c.label} style={{ borderRadius:10, padding:"8px 10px", display:"flex", gap:8, alignItems:"center", backgroundColor:`${T}12`, border:`1px solid ${T}25` }}>
                 <span style={{ fontSize:14, flexShrink:0 }}>{c.icon}</span>
                 <div>
                   <p style={{ fontSize:"8px", fontWeight:700, color:T, textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:2 }}>{c.label}</p>
-                  <p style={{ fontSize:"11px", fontWeight:700, color:"#FFFFF2", lineHeight:1.3 }}>{c.val}</p>
+                  <p style={{ fontSize:"11px", fontWeight:700, color:P, lineHeight:1.3 }}>{c.val}</p>
                 </div>
               </div>
             ))}
