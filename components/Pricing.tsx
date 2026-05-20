@@ -316,11 +316,11 @@ export default function Pricing() {
             border-right: none !important;
             border-bottom: 1px solid rgba(97,191,191,0.1) !important;
             padding: 36px 24px !important;
-            order: 2;
+            order: 1;
           }
           .pricing-card > div:last-child {
             padding: 36px 24px !important;
-            order: 1;
+            order: 2;
           }
         }
         @media (max-width: 768px) {
