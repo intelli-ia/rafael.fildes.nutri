@@ -114,7 +114,7 @@ export default function FAQ() {
               Segunda a sexta · 9h às 18h
             </p>
             <a
-              href="https://wa.me/5571999999999"
+              href="https://wa.me/5571991631437"
               target="_blank" rel="noopener noreferrer"
               style={{
                 display:"inline-flex", alignItems:"center", gap:10,
