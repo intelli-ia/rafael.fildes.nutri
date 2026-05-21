@@ -1,6 +1,6 @@
 'use client';
 
-import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
+import { TestimonialsColumn, TestimonialsRow } from "@/components/ui/testimonials-columns-1";
 import { motion } from "motion/react";
 import { useIsMobile } from "@/lib/useIsMobile";
 
@@ -110,27 +110,39 @@ export default function DietCarousel() {
           </p>
         </motion.div>
 
-        {/* Colunas animadas */}
-        <div className="diet-columns" style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '16px',
-          maxHeight: '740px',
-          overflow: 'hidden',
-          maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
-        }}>
-          <TestimonialsColumn items={col1} duration={isMobile ? 10 : 28} />
-          <TestimonialsColumn items={col2} duration={22} className="hidden md:block" />
-          <TestimonialsColumn items={col3} duration={25} className="hidden lg:block" />
-        </div>
+        {/* Mobile: linhas horizontais direita → esquerda */}
+        {isMobile && (
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '16px',
+            overflow: 'hidden',
+            maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+          }}>
+            <TestimonialsRow items={col1} duration={10} />
+            <TestimonialsRow items={col2} duration={13} />
+            <TestimonialsRow items={col3} duration={11} />
+          </div>
+        )}
+
+        {/* Desktop: linhas horizontais direita → esquerda */}
+        {!isMobile && (
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '16px',
+            overflow: 'hidden',
+            maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+          }}>
+            <TestimonialsRow items={col1} duration={28} />
+            <TestimonialsRow items={col2} duration={22} />
+            <TestimonialsRow items={col3} duration={25} />
+          </div>
+        )}
 
       </div>
-      <style>{`
-        @media (max-width: 768px) {
-          .diet-columns { max-height: 480px !important; gap: 0 !important; }
-        }
-      `}</style>
     </section>
   );
 }
